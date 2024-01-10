@@ -1,0 +1,59 @@
+/* style.css */
+
+/* 全体の背景色を水色に設定 */
+body {
+    background-color: rgb(159, 214, 251);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* h1要素（ヘッダー）のスタイル */
+  h1 {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    margin-top: 0;
+  }
+  
+  /* p要素（目標記入欄）のスタイル */
+  p {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 25px;
+  }
+  
+  /* goalForm（フォーム）のスタイル */
+  #goalForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  /* 目標リストの囲み */
+  #goalList {
+    background-color: rgba(0, 81, 255, 0.336);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+    
+  }
+  
+  /* メッセージのスタイル */
+  #message {
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: italic;
+    font-size: 30px;
+
+  }
+  h4 {
+    text-align: center;
+    font-size:30px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
