@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title>目標設定フォーム</title>
+</head>
+<body>
+  <h3>今日を振り返ってみて明日の目標を立てましょう。</h3>
+  
+  <form id="goalForm">
+    <label for="goalInput">目標：</label>
+    <input type="text" id="goalInput" name="goal" required>
+    <button type="submit">目標を設定</button>
+  </form>
+
+  <h4>明日の目標</h4>
+  <div id="goalList">
+    <!-- 入力された目標を表示するための空のリスト -->
+  </div>
+  <div id="message"></div>
+
+  <script>
+    document.getElementById('goalForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      var goal = document.getElementById('goalInput').value;
+
+      // 目標リストをクリア
+      document.getElementById('goalList').innerHTML = '';
+
+      // 新しい目標を表示する要素を作成し、テキストを追加
+      var goalItem = document.createElement('p');
+      goalItem.textContent = goal;
+
+      // 目標リストに新しい目標を追加
+      document.getElementById('goalList').appendChild(goalItem);
+
+      // フォームの内容をクリア
+      document.getElementById('goalInput').value = '';
+
+      // 入力された目標を保存する（ここではローカルストレージを使用）
+      saveGoal(goal);
+
+      // メッセージを表示
+      displayMessage();
+    });
+
+    // ローカルストレージに目標を保存する関数
+    function saveGoal(goal) {
+      var goals = JSON.parse(localStorage.getItem('goals')) || []; // 保存されている目標を取得
+
+      goals = [goal]; // 新しい目標で上書き
+      localStorage.setItem('goals', JSON.stringify(goals)); // 目標を保存
+    }
+
+    // 入力された目標に関するメッセージを表示する関数
+    function displayMessage() {
+      var messageDiv = document.getElementById('message');
+      messageDiv.textContent = '素晴らしい目標です！明日も頑張りましょう！！';
+    }
+
+    // ローカルストレージから目標を読み込み、リストに表示する
+    window.onload = function() {
+      var goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+      var goalList = document.getElementById('goalList');
+
+      goals.forEach(function(goal) {
+        var goalItem = document.createElement('p');
+        goalItem.textContent = goal;
+        goalList.appendChild(goalItem);
+      });
+    };
+  </script>
+</body>
+</html>
